@@ -24,6 +24,6 @@ public class Attack : MonoBehaviour {
             RightAimIcon.transform.localPosition = tempvector;
         }
 
-        Debug.Log(RightAimIcon.transform.position);
+        //Debug.Log(RightAimIcon.transform.position);
     }
 }
