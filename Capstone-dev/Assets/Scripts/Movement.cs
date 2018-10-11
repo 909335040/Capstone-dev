@@ -5,6 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     public float WalkSpeed = 1f;
+
+    private float yRotate;
     // Use this for initialization
     void Start () {
         
@@ -14,7 +16,19 @@ public class Movement : MonoBehaviour {
 	void Update () {
         // float value = Input.GetAxis("Left Y");
         //Debug.Log(value);
-        transform.Translate(Input.GetAxis("Left X") * 0.05f *WalkSpeed, Input.GetAxis("Left Y") * 0.05f * WalkSpeed, 0);
+        if (Mathf.Abs(Input.GetAxis("Left X")) <= 1 && Mathf.Abs(Input.GetAxis("Left Y")) <= 1){
+            transform.Translate(Input.GetAxis("Left X") * 0.05f * WalkSpeed, Input.GetAxis("Left Y") * 0.05f * WalkSpeed, 0);
+
+            if (Input.GetAxis("Left X") > 0){
+                yRotate = 0;
+                transform.rotation=Quaternion.Euler(0,yRotate,0);
+            }
+            else {
+                yRotate = 180;
+                transform.rotation = Quaternion.Euler(0, yRotate, 0);
+            }
+        }
+
        
 
 
